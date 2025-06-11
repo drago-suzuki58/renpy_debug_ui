@@ -27,3 +27,5 @@ Ren'Py Debug UI は、Ren'Py のデバッグや開発を支援するためのツ
 
 フォントのライセンス全文は [OFL.txt](OFL.txt) に同梱しています。  
 また、[SIL Open Font License 1.1](https://scripts.sil.org/OFL) もご参照ください。
+
+コード自体のライセンスは[MIT License](LICENSE)となっています。

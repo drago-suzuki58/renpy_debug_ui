@@ -27,3 +27,5 @@ This repository includes the [M PLUS 1p Regular](https://fonts.google.com/specim
 
 The full font license text is included in [OFL.txt](OFL.txt).  
 See also the [SIL Open Font License 1.1](https://scripts.sil.org/OFL).
+
+The code itself is licensed under the [MIT License](LICENSE).
