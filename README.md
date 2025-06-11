@@ -1,5 +1,7 @@
 # Ren'Py Debug UI
 
+![The Ren'Py tutorial game is running with the Ren'Py Debug UI displayed. The UI includes sections for "Debug UI Readme," "Language Settings," and "Script Position." In the language settings, there are multiple language switch buttons, and in the script position section, the current file name (game/script.rpy) and line number (154) are shown.](assets/images/image.png)
+
 Ren'Py Debug UI is a tool currently under development to assist with debugging and development in Ren'Py.
 
 ## Features

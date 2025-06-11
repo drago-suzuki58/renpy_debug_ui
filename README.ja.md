@@ -1,5 +1,7 @@
 # Ren'Py Debug UI
 
+![Ren'Pyチュートリアルゲームの実行画面に、Ren'Py Debug UIが表示されています。そのUIには「Debug UI Readme」「Language Settings」「Script Position」のセクションがあります。言語設定では複数の言語切り替えボタンが、スクリプト位置表示では現在のファイル名（game/script.rpy）と行番号（154）が確認できます。](assets/images/image.png)
+
 Ren'Py Debug UI は、Ren'Py のデバッグや開発を支援するためのツールとして、現在開発中です。
 
 ## 特徴
