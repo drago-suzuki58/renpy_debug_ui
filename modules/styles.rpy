@@ -1,15 +1,16 @@
 # base styles
 style debug_ui is default:
     background Frame("#1e1e2edd", 12, 12)
+    xsize 500
     xalign 0.0
     yalign 0.0
     xmargin 12
     ymargin 12
-    xsize 500
 
 style debug_ui_accordion is default:
     font _debug_ui_font_path
     size 16
+    bold True
     background Frame("#2d3748", 8, 8)
     hover_background Frame("#4a5568", 8, 8)
     insensitive_background Frame("#718096", 8, 8)
@@ -20,18 +21,19 @@ style debug_ui_accordion is default:
 
 style debug_ui_accordion_text is default:
     font _debug_ui_font_path
+    size 16
+    bold True
     color "#e2e8f0"
     hover_color "#90cdf4"
     insensitive_color "#a0aec0"
-    size 16
-    bold True
 
 style debug_ui_text is default:
     font _debug_ui_font_path
-    color "#cbd5e0"
     size 14
-    text_align 0.0
+    color "#cbd5e0"
     xsize 460
+    xalign 0.0
+    xpos 20
 
 style debug_ui_button is default:
     background Frame("#3182ce", 6, 6)
@@ -39,15 +41,17 @@ style debug_ui_button is default:
     insensitive_background Frame("#718096", 6, 6)
     xpadding 8
     ypadding 3
-    xmargin 3
+    xmargin 20
     ymargin 2
+    xfill True
 
 style debug_ui_button_text is default:
     font _debug_ui_font_path
+    size 14
     color "#ffffff"
     hover_color "#bee3f8"
     insensitive_color "#a0aec0"
-    size 14
+    xalign 0.5
 
 style debug_ui_section is default:
     background Frame("#2a2d3a", 6, 6)
@@ -62,5 +66,3 @@ style debug_ui_title_accordion is debug_ui_accordion:
 style debug_ui_title_accordion_text is debug_ui_accordion_text:
     color "#e2e8f0"
     hover_color "#90cdf4"
-    size 16
-    bold True
