@@ -7,7 +7,8 @@ init python:
         "collapsed": False,
         "readme_collapsed": False,
         "lang_collapsed": False,
-        "script_collapsed": False
+        "script_collapsed": False,
+        "information_collapsed": False
     }
 
     def toggle_debug_ui():

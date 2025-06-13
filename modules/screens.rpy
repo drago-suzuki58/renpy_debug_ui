@@ -21,6 +21,7 @@ screen debug_ui_display():
                         use debug_ui_readme()
                         use debug_ui_language_section()
                         use debug_ui_script_section()
+                        use debug_ui_information_section()
 
 
 screen debug_ui_readme():
@@ -60,6 +61,33 @@ screen debug_ui_script_section():
                 vbox:
                     text "File: [_debug_ui_script_pos_filename]" style "debug_ui_text"
                     text "Line: [_debug_ui_script_pos_lineno]" style "debug_ui_text"
+
+screen debug_ui_information_section():
+    frame:
+        style "debug_ui_section"
+        vbox:
+            spacing 4
+
+            use debug_ui_header("information_collapsed", "Information Metrics")
+            if not _debug_ui_headers["information_collapsed"]:
+                python:
+                    try:
+                        renderer_info = renpy.get_renderer_info()
+                        renderer_name = renderer_info.get("renderer", "Unknown") if renderer_info else "Unknown"
+                        physical_size_x, physical_size_y = renpy.get_physical_size()
+                    except:
+                        renderer_name = "Unknown"
+
+                vbox:
+                    text "Screen" style "debug_ui_text" size 20
+                    text "Screen Size: [config.screen_width]x[config.screen_height]" style "debug_ui_text"
+                    text "Window Size: [physical_size_x]x[physical_size_y]" style "debug_ui_text"
+                    text "Renderer: [renderer_name]" style "debug_ui_text"
+                    text "Fullscreen: [preferences.fullscreen]" style "debug_ui_text"
+
+                    text "System" style "debug_ui_text" size 20
+                    text "Ren'Py: [renpy.version_string]" style "debug_ui_text"
+                    text "Platform: [renpy.platform]" style "debug_ui_text"
 
 
 # components
