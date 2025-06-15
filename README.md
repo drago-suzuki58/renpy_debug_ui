@@ -19,6 +19,12 @@ Ren'Py Debug UI is a tool currently under development to assist with debugging a
 
 - Toggle the debug UI display on/off with the Insert key
 
+## Compatibility
+
+This tool supports Ren'Py 8.0 and later versions.  
+While it may work with earlier versions, compatibility is not guaranteed.  
+Support for earlier versions may be added in the future.
+
 ## Fonts & License
 
 This repository includes the [M PLUS 1p Regular](https://fonts.google.com/specimen/M+PLUS+1p) font.
