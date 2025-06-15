@@ -2,9 +2,9 @@
 screen debug_ui_display():
     layer "debug_ui_layer"
 
-    key _debug_ui_hotkey action Function(toggle_debug_ui)
+    key debug_ui.hotkey action Function(debug_ui.toggle_visibility)
 
-    if _debug_ui_visible:
+    if debug_ui.visible:
         button:
             style "debug_ui"
             focus_mask True
@@ -13,8 +13,8 @@ screen debug_ui_display():
             vbox:
                 spacing 6
 
-                textbutton ("▼" if _debug_ui_headers["collapsed"] else "▲") + " " + "Debug UI" action ToggleDict(_debug_ui_headers, "collapsed") style "debug_ui_title_accordion"
-                if not _debug_ui_headers["collapsed"]:
+                textbutton ("▼" if debug_ui.accordions["collapsed"] else "▲") + " " + "Debug UI" action ToggleDict(debug_ui.accordions, "collapsed") style "debug_ui_title_accordion"
+                if not debug_ui.accordions["collapsed"]:
                     vbox:
                         spacing 8
 
@@ -31,11 +31,11 @@ screen debug_ui_readme():
             spacing 4
 
             use debug_ui_header("readme_collapsed", "Debug UI Readme")
-            if not _debug_ui_headers["readme_collapsed"]:
+            if not debug_ui.accordions["readme_collapsed"]:
                 vbox:
                     text "This is a Debug UI for Ren'Py games." style "debug_ui_text"
                     text "Press the hotkey (default: Insert) to toggle the visibility of this UI." style "debug_ui_text"
-                    textbutton "Close" action Function(toggle_debug_ui) style "debug_ui_button"
+                    textbutton "Close" action Function(debug_ui.toggle_visibility) style "debug_ui_button"
 
 screen debug_ui_language_section():
     frame:
@@ -44,7 +44,7 @@ screen debug_ui_language_section():
             spacing 4
 
             use debug_ui_header("lang_collapsed", "Language Settings")
-            if not _debug_ui_headers["lang_collapsed"]:
+            if not debug_ui.accordions["lang_collapsed"]:
                 vbox:
                     textbutton "Default Language" action Language(None) style "debug_ui_button"
                     for code in renpy.known_languages():
@@ -57,10 +57,10 @@ screen debug_ui_script_section():
             spacing 4
 
             use debug_ui_header("script_collapsed", "Script Position")
-            if not _debug_ui_headers["script_collapsed"]:
+            if not debug_ui.accordions["script_collapsed"]:
                 vbox:
-                    text "File: [_debug_ui_script_pos_filename]" style "debug_ui_text"
-                    text "Line: [_debug_ui_script_pos_lineno]" style "debug_ui_text"
+                    text "File: [debug_ui.script_pos_filename]" style "debug_ui_text"
+                    text "Line: [debug_ui.script_pos_lineno]" style "debug_ui_text"
 
 screen debug_ui_information_section():
     frame:
@@ -69,7 +69,7 @@ screen debug_ui_information_section():
             spacing 4
 
             use debug_ui_header("information_collapsed", "Information Metrics")
-            if not _debug_ui_headers["information_collapsed"]:
+            if not debug_ui.accordions["information_collapsed"]:
                 python:
                     try:
                         renderer_info = renpy.get_renderer_info()
@@ -92,4 +92,4 @@ screen debug_ui_information_section():
 
 # components
 screen debug_ui_header(collapsed, header_text):
-    textbutton ("▼" if _debug_ui_headers[collapsed] else "▲") + " " + header_text action ToggleDict(_debug_ui_headers, collapsed) style "debug_ui_accordion"
+    textbutton ("▼" if debug_ui.accordions[collapsed] else "▲") + " " + header_text action ToggleDict(debug_ui.accordions, collapsed) style "debug_ui_accordion"

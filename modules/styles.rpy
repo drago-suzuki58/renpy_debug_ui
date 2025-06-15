@@ -8,7 +8,7 @@ style debug_ui is default:
     ymargin 12
 
 style debug_ui_accordion is default:
-    font _debug_ui_font_path
+    font debug_ui.font_path
     size 16
     bold True
     background Frame("#2d3748", 8, 8)
@@ -20,7 +20,7 @@ style debug_ui_accordion is default:
     xfill True
 
 style debug_ui_accordion_text is default:
-    font _debug_ui_font_path
+    font debug_ui.font_path
     size 16
     bold True
     color "#e2e8f0"
@@ -28,7 +28,7 @@ style debug_ui_accordion_text is default:
     insensitive_color "#a0aec0"
 
 style debug_ui_text is default:
-    font _debug_ui_font_path
+    font debug_ui.font_path
     size 14
     color "#cbd5e0"
     xsize 460
@@ -46,7 +46,7 @@ style debug_ui_button is default:
     xfill True
 
 style debug_ui_button_text is default:
-    font _debug_ui_font_path
+    font debug_ui.font_path
     size 14
     color "#ffffff"
     hover_color "#bee3f8"
