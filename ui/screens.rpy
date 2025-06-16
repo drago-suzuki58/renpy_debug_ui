@@ -13,7 +13,7 @@ screen debug_ui_display():
             vbox:
                 spacing 6
 
-                textbutton ("▼" if debug_ui.accordions["collapsed"] else "▲") + " " + "Debug UI" action ToggleDict(debug_ui.accordions, "collapsed") style "debug_ui_title_accordion"
+                textbutton ("[DBG]▼" if debug_ui.accordions["collapsed"] else "[DBG]▲") + " " + "Debug UI" action ToggleDict(debug_ui.accordions, "collapsed") style "debug_ui_title_accordion"
                 if not debug_ui.accordions["collapsed"]:
                     vbox:
                         spacing 8
@@ -30,12 +30,12 @@ screen debug_ui_readme():
         vbox:
             spacing 4
 
-            use debug_ui_header("readme_collapsed", "Debug UI Readme")
+            use debug_ui_accordion("readme_collapsed", "[DBG]Debug UI Readme")
             if not debug_ui.accordions["readme_collapsed"]:
                 vbox:
-                    text "This is a Debug UI for Ren'Py games." style "debug_ui_text"
-                    text "Press the hotkey (default: Insert) to toggle the visibility of this UI." style "debug_ui_text"
-                    textbutton "Close" action Function(debug_ui.toggle_visibility) style "debug_ui_button"
+                    text "[DBG]This is a Debug UI for Ren'Py games." style "debug_ui_text"
+                    text "[DBG]Press the hotkey (default: Insert) to toggle the visibility of this UI." style "debug_ui_text"
+                    textbutton "[DBG]Close" action Function(debug_ui.toggle_visibility) style "debug_ui_button"
 
 screen debug_ui_language_section():
     frame:
@@ -43,12 +43,12 @@ screen debug_ui_language_section():
         vbox:
             spacing 4
 
-            use debug_ui_header("lang_collapsed", "Language Settings")
+            use debug_ui_accordion("lang_collapsed", "[DBG]Language Settings")
             if not debug_ui.accordions["lang_collapsed"]:
                 vbox:
-                    textbutton "Default Language" action Language(None) style "debug_ui_button"
+                    textbutton "[DBG]Default Language" action Language(None) style "debug_ui_button"
                     for code in renpy.known_languages():
-                        textbutton code action Language(code) style "debug_ui_button"
+                        textbutton DBG + code action Language(code) style "debug_ui_button"
 
 screen debug_ui_script_section():
     frame:
@@ -56,11 +56,11 @@ screen debug_ui_script_section():
         vbox:
             spacing 4
 
-            use debug_ui_header("script_collapsed", "Script Position")
+            use debug_ui_accordion("script_collapsed", "[DBG]Script Position")
             if not debug_ui.accordions["script_collapsed"]:
                 vbox:
-                    text "File: [debug_ui.script_pos_filename]" style "debug_ui_text"
-                    text "Line: [debug_ui.script_pos_lineno]" style "debug_ui_text"
+                    text "[DBG]File: [debug_ui.script_pos_filename]" style "debug_ui_text"
+                    text "[DBG]Line: [debug_ui.script_pos_lineno]" style "debug_ui_text"
 
 screen debug_ui_information_section():
     frame:
@@ -68,7 +68,7 @@ screen debug_ui_information_section():
         vbox:
             spacing 4
 
-            use debug_ui_header("information_collapsed", "Information Metrics")
+            use debug_ui_accordion("information_collapsed", "[DBG]Information Metrics")
             if not debug_ui.accordions["information_collapsed"]:
                 python:
                     try:
@@ -79,17 +79,17 @@ screen debug_ui_information_section():
                         renderer_name = "Unknown"
 
                 vbox:
-                    text "Screen" style "debug_ui_text" size 20
-                    text "Screen Size: [config.screen_width]x[config.screen_height]" style "debug_ui_text"
-                    text "Window Size: [physical_size_x]x[physical_size_y]" style "debug_ui_text"
-                    text "Renderer: [renderer_name]" style "debug_ui_text"
-                    text "Fullscreen: [preferences.fullscreen]" style "debug_ui_text"
+                    text "[DBG]Screen" style "debug_ui_text" size 20
+                    text "[DBG]Screen Size: [config.screen_width]x[config.screen_height]" style "debug_ui_text"
+                    text "[DBG]Window Size: [physical_size_x]x[physical_size_y]" style "debug_ui_text"
+                    text "[DBG]Renderer: [renderer_name]" style "debug_ui_text"
+                    text "[DBG]Fullscreen: [preferences.fullscreen]" style "debug_ui_text"
 
-                    text "System" style "debug_ui_text" size 20
-                    text "Ren'Py: [renpy.version_string]" style "debug_ui_text"
-                    text "Platform: [renpy.platform]" style "debug_ui_text"
+                    text "[DBG]System" style "debug_ui_text" size 20
+                    text "[DBG]Ren'Py: [renpy.version_string]" style "debug_ui_text"
+                    text "[DBG]Platform: [renpy.platform]" style "debug_ui_text"
 
 
 # components
-screen debug_ui_header(collapsed, header_text):
-    textbutton ("▼" if debug_ui.accordions[collapsed] else "▲") + " " + header_text action ToggleDict(debug_ui.accordions, collapsed) style "debug_ui_accordion"
+screen debug_ui_accordion(collapsed, header_text):
+    textbutton ("[DBG]▼" if debug_ui.accordions[collapsed] else "[DBG]▲") + " " + header_text action ToggleDict(debug_ui.accordions, collapsed) style "debug_ui_accordion"

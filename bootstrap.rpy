@@ -12,6 +12,9 @@ init python:
 
         debug_ui = DebugUI()
 
+        # Debug UI strings prefix
+        DBG = ""
+
     except Exception as e:
         renpy.error(f"Failed to initialize Debug UI: {e}")
 
