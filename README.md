@@ -4,6 +4,8 @@
 
 Ren'Py Debug UI is a tool currently under development to assist with debugging and development in Ren'Py.
 
+[日本語](README.ja.md) | [English](README.md)
+
 ## Features
 
 - [x] Fast language switching
@@ -19,11 +21,12 @@ Ren'Py Debug UI is a tool currently under development to assist with debugging a
 
 - Toggle the debug UI display on/off with the Insert key
 
-## Compatibility
+## Supported Versions
 
-This tool supports Ren'Py 8.0 and later versions.  
-While it may work with earlier versions, compatibility is not guaranteed.  
-Support for earlier versions may be added in the future.
+This tool is primarily developed for Ren'Py version 8.0 and later.  
+It currently works with Ren'Py 6.99.11 and above, but as development progresses, compatibility with older versions may be lost. Please be aware of this in advance.
+
+Note: Versions of Ren'Py earlier than 6.99.11 have significantly different GUI APIs, and are not supported by this tool.
 
 ## Fonts & License
 
