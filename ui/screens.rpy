@@ -22,6 +22,7 @@ screen debug_ui_display():
                         use debug_ui_language_section()
                         use debug_ui_script_section()
                         use debug_ui_information_section()
+                        use debug_ui_test_prompt()
 
 
 screen debug_ui_readme():
@@ -89,7 +90,48 @@ screen debug_ui_information_section():
                     text "[DBG]Ren'Py: [renpy.version_string]" style "debug_ui_text"
                     text "[DBG]Platform: [renpy.platform]" style "debug_ui_text"
 
+screen debug_ui_test_prompt():
+    frame:
+        style "debug_ui_section"
+        vbox:
+            spacing 4
+
+            use debug_ui_accordion("test_prompt_collapsed", "[DBG]Test Prompt")
+            if not debug_ui.accordions["test_prompt_collapsed"]:
+                vbox:
+                    text "[DBG]Test Prompt" style "debug_ui_text"
+                    text "[DBG]Current Input: " + debug_ui.input_messages["test_prompt"] style "debug_ui_text" size 12
+                    textbutton "[DBG]Set Message" action Function(debug_ui.input_prompt, "test_prompt", "Test Prompt") style "debug_ui_button"
+
 
 # components
 screen debug_ui_accordion(collapsed, header_text):
     textbutton ("[DBG]▼" if debug_ui.accordions[collapsed] else "[DBG]▲") + " " + header_text action ToggleDict(debug_ui.accordions, collapsed) style "debug_ui_accordion"
+
+
+# Other
+screen debug_ui_input_prompt():
+    layer "debug_ui_layer"
+    modal True
+
+    button:
+        style "debug_ui_textinput"
+        action NullAction()
+
+        frame:
+            style "debug_ui_textinput_floating"
+            vbox:
+                spacing 10
+
+                text debug_ui._input_data_prompt style "debug_ui_text" size 20
+                frame:
+                    style "debug_ui_textinput_section"
+                    input value FieldInputValue(debug_ui, "_input_temp_message") style "debug_ui_textinput_input"
+
+                vbox:
+                    spacing 10
+                    textbutton "[DBG]Submit" action [
+                        SetDict(debug_ui.input_messages, debug_ui._input_data_key, debug_ui._input_temp_message),
+                        Hide("debug_ui_input_prompt")
+                    ] style "debug_ui_button"
+                    textbutton "[DBG]Cancel" action Hide("debug_ui_input_prompt") style "debug_ui_button"

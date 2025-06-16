@@ -57,6 +57,31 @@ style debug_ui_section is default:
     background Frame("#2a2d3a", 6, 6)
     xfill True
 
+style debug_ui_textinput is default:
+    font debug_ui.font_path
+    size 16
+    xfill True
+    yfill True
+    background "#00000080"
+
+style debug_ui_textinput_floating is default:
+    background Frame("#2a2d3a", 6, 6)
+    xfill True
+    xalign 0.5
+    yalign 0.5
+    xmaximum 400
+
+style debug_ui_textinput_section is default:
+    background Frame("#2a2d3a", 6, 6)
+    xfill True
+    xmargin 20
+    ymargin 10
+
+style debug_ui_textinput_input is input:
+    font debug_ui.font_path
+    size 18
+    color "#ffffff"
+
 
 # custom styles
 style debug_ui_title_accordion is debug_ui_accordion:
