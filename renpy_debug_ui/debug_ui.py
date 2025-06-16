@@ -1,5 +1,6 @@
 import renpy
 
+
 class DebugUI:
     def __init__(self):
         # Debug UI Configuration
@@ -23,7 +24,7 @@ class DebugUI:
     # Debug UI System Methods
     def toggle_visibility(self):
         self.visible = not self.visible
-        renpy.restart_interaction()
+        renpy.exports.restart_interaction()
 
 
     # Tracking
@@ -32,6 +33,6 @@ class DebugUI:
             "say", "say-bubble", "say-nvl", "say-centered", "menu", "menu-nvl", "menu-with-caption", "menu-nvl-with-caption"
         ]
         if any(statement_name.startswith(t) for t in targets):
-            filename, lineno = renpy.get_filename_line()
+            filename, lineno = renpy.exports.get_filename_line()
             self.script_pos_filename = filename
             self.script_pos_lineno = lineno
