@@ -15,14 +15,19 @@ screen debug_ui_display():
 
                 textbutton ("[DBG]▼" if debug_ui.accordions["collapsed"] else "[DBG]▲") + " " + "Debug UI" action ToggleDict(debug_ui.accordions, "collapsed") style "debug_ui_title_accordion"
                 if not debug_ui.accordions["collapsed"]:
-                    vbox:
-                        spacing 8
+                    viewport:
+                        draggable True
+                        mousewheel True
+                        scrollbars "vertical"
 
-                        use debug_ui_readme()
-                        use debug_ui_language_section()
-                        use debug_ui_script_section()
-                        use debug_ui_information_section()
-                        use debug_ui_test_prompt()
+                        vbox:
+                            spacing 8
+
+                            use debug_ui_readme()
+                            use debug_ui_language_section()
+                            use debug_ui_script_section()
+                            use debug_ui_information_section()
+                            use debug_ui_test_prompt()
 
 
 screen debug_ui_readme():

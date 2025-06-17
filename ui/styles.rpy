@@ -6,6 +6,7 @@ style debug_ui is default:
     yalign 0.0
     xmargin 12
     ymargin 12
+    ymaximum 600
 
 style debug_ui_accordion is default:
     font debug_ui.font_path
@@ -91,3 +92,12 @@ style debug_ui_title_accordion is debug_ui_accordion:
 style debug_ui_title_accordion_text is debug_ui_accordion_text:
     color "#e2e8f0"
     hover_color "#90cdf4"
+
+
+# Override styles
+style vscrollbar:
+    base_bar Frame("#4a5568", 8, 8)
+    thumb Frame("#3182ce", 8, 8)
+    hover_thumb Frame("#63b3ed", 8, 8)
+    xsize 8
+    unscrollable "insensitive"

@@ -47,8 +47,3 @@ class DebugUI:
         self._input_temp_message = self.input_messages.get(key, "")
 
         renpy.exports.show_screen("debug_ui_input_prompt")
-
-    def handle_input_result(self, key, message):
-        if message is not None:
-            self.input_messages[key] = message
-        renpy.exports.restart_interaction()
