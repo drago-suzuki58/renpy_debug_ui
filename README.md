@@ -10,6 +10,7 @@ Ren'Py Debug UI is a tool currently under development to assist with debugging a
 
 - [x] Fast language switching
 - [x] Display of the file and line number for the currently shown dialogue or choices
+- [x] Variable Explorer
 
 ## Installation
 

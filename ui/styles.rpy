@@ -28,6 +28,21 @@ style debug_ui_accordion_text is default:
     hover_color "#90cdf4"
     insensitive_color "#a0aec0"
 
+style debug_ui_child_accordion is default:
+    font debug_ui.font_path
+    size 16
+    hover_background Frame("#4b5563", 4, 4)
+    insensitive_background Frame("#6b7280", 4, 4)
+    xfill True
+
+style debug_ui_child_accordion_text is default:
+    font debug_ui.font_path
+    size 16
+    hover_color "#f3f4f6"
+    insensitive_color "#9ca3af"
+    xpos 20
+    xsize 460
+
 style debug_ui_text is default:
     font debug_ui.font_path
     size 14

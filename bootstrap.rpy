@@ -4,9 +4,8 @@ init python:
     import os
 
     try:
-        module_path = os.path.join(renpy.config.gamedir, 'renpy_debug_ui')
-        if module_path not in sys.path:
-            sys.path.append(module_path)
+        if os.path.join(renpy.config.gamedir, 'renpy_debug_ui') not in sys.path:
+            sys.path.append(os.path.join(renpy.config.gamedir, 'renpy_debug_ui'))
 
         from renpy_debug_ui import DebugUI
 
