@@ -104,12 +104,12 @@ screen debug_ui_store_explorer():
 
             use debug_ui_accordion("store_explorer_collapsed", "[DBG]Store Explorer")
             if not debug_ui.accordions["store_explorer_collapsed"]:
+                textbutton "[DBG]Refresh" action Function(debug_ui.update_store_explorer_cache) style "debug_ui_button"
                 vbox:
                     spacing 4
 
-                    for name, value in renpy.store.__dict__.items():
-                        if not name.startswith('__') and not name.startswith('_') and isinstance(name, str):
-                            use debug_ui_store_variable(name, value)
+                    for name in debug_ui.cached_store_items:
+                        use debug_ui_store_variable(name)
 
 screen debug_ui_test_prompt():
     frame:
@@ -132,7 +132,7 @@ screen debug_ui_accordion(collapsed, header_text):
 screen debug_ui_child_accordion(collapsed, header_text):
     textbutton ("[DBG]▼" if debug_ui.child_accordions[collapsed] else "[DBG]▲") + " " + header_text action ToggleDict(debug_ui.child_accordions, collapsed) style "debug_ui_child_accordion"
 
-screen debug_ui_store_variable(name, value):
+screen debug_ui_store_variable(name):
     python:
         safe_name = name.replace(' ', '_').replace('-', '_').replace('.', '_')
         child_collapsed_name = "store_explorer_" + safe_name + "_collapsed"
@@ -140,10 +140,12 @@ screen debug_ui_store_variable(name, value):
         if child_collapsed_name not in debug_ui.child_accordions:
             debug_ui.child_accordions[child_collapsed_name] = True
 
-        value_type_name = type(value).__name__
-
     use debug_ui_child_accordion(child_collapsed_name, "[DBG]" + name)
     if not debug_ui.child_accordions[child_collapsed_name]:
+        python:
+            value = getattr(renpy.store, name)
+            value_type_name = type(value).__name__
+
         vbox:
             text "[DBG]Name: [name]" style "debug_ui_text"
             text "[DBG]Type: [value_type_name]" style "debug_ui_text"

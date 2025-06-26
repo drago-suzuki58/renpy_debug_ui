@@ -17,6 +17,7 @@ class DebugUI:
             "test_prompt_collapsed": True,
         }
         self.child_accordions = {}
+        self.cached_store_items = []
 
 
         # Tracking
@@ -26,6 +27,15 @@ class DebugUI:
         self.input_messages = {
             "test_prompt": "",
         }
+
+        self.update_store_explorer_cache()
+
+    def update_store_explorer_cache(self):
+        self.cached_store_items = []
+        for name in renpy.store.__dict__.keys():
+            if not name.startswith('__') and not name.startswith('_') and isinstance(name, str):
+                self.cached_store_items.append(name)
+        renpy.exports.restart_interaction()
 
     # Debug UI System Methods
     def toggle_visibility(self):
